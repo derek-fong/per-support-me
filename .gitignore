@@ -1,8 +1,18 @@
+# NPM Files
 node_modules/
-bower_components/
-coverage/
-.sass-cache/
+.npm
+
+# Temporary files
+tmp/
+
+# IDE Files
 .idea/
-.tmp/
-dist/
-src/assets/videos
+*.iml
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# OS Files
+.DS_Store
