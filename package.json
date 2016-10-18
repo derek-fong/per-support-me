@@ -3,7 +3,10 @@
   "license": "MIT",
   "repository": "https://github.com/derek-fong/per-support-me/",
   "nativescript": {
-    "id": "org.nativescript.tksupportme"
+    "id": "org.nativescript.tksupportme",
+    "tns-ios": {
+      "version": "2.4.0-2016-9-28-1"
+    }
   },
   "dependencies": {
     "tns-core-modules": "2.3.0"

@@ -1,18 +1,28 @@
-# NPM Files
-node_modules/
-.npm
-
-# Temporary files
-tmp/
+# Build Files
+app/**/*.js
 
 # IDE Files
 .idea/
 *.iml
 
 # Logs
-logs
+logs/
 *.log
 npm-debug.log*
 
+# NPM Files
+node_modules/
+.npm
+
 # OS Files
 .DS_Store
+
+# Platforms
+platforms/
+
+# Temporary files
+lib/
+tmp/
+
+# Typings
+typings/
