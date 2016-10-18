@@ -1,0 +1,11 @@
+{
+  "description": "Informing and finding health support services for young people.",
+  "license": "MIT",
+  "repository": "https://github.com/derek-fong/per-support-me/",
+  "nativescript": {
+    "id": "org.nativescript.tksupportme"
+  },
+  "dependencies": {
+    "tns-core-modules": "2.3.0"
+  }
+}
