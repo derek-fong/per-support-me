@@ -1,5 +1,6 @@
 # Build Files
 app/**/*.js
+app/**/*.js.map
 
 # IDE Files
 .idea/
@@ -19,6 +20,7 @@ node_modules/
 
 # Platforms
 platforms/
+hooks/
 
 # Temporary files
 lib/
