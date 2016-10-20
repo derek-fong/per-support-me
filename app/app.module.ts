@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { NativeScriptModule } from 'nativescript-angular/platform';
 
 import { AppComponent } from './app.component';
@@ -8,6 +9,7 @@ import { StoriesModule } from './stories/stories.module';
 @NgModule({
   imports: [
     AppRoutingModule,
+    CommonModule,
     NativeScriptModule,
     StoriesModule
   ],
