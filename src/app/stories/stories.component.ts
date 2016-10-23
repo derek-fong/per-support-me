@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'tk-app',
+  selector: 'tk-stories',
   template: `
     <router-outlet></router-outlet>
   `
 })
-export class AppComponent { }
+export class StoriesComponent { }
