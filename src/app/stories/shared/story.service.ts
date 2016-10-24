@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
   AngularFire,
-  AuthMethods,
-  AuthProviders,
   FirebaseListObservable,
   FirebaseObjectObservable
 } from 'angularfire2';
@@ -13,14 +11,7 @@ import { Story } from './story.model';
 @Injectable()
 export class StoryService {
 
-  constructor(private angularFire: AngularFire) {
-    this.angularFire.auth.login({
-      provider: AuthProviders.Anonymous,
-      method: AuthMethods.Anonymous
-    });
-
-    this.angularFire.database.list('/stories').remove();
-  }
+  constructor(private angularFire: AngularFire) { }
 
   /**
    * Add story.
