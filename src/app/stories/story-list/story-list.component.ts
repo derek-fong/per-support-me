@@ -7,7 +7,7 @@ import { StoryService } from '../shared/story.service';
 @Component({
   selector: 'tk-story-list',
   templateUrl: './story-list.component.html',
-  styleUrls: ['./story-list.component.css']
+  styleUrls: ['./story-list.component.scss']
 })
 export class StoryListComponent implements OnInit {
   private keyword: string = 'ccc';  // REVIEW: Change keyword.
