@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AppDatabaseModule } from './app-database.module';
 import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './shared/shared.module';
 import { StoriesModule } from './stories/stories.module';
 
 @NgModule({
@@ -15,6 +16,7 @@ import { StoriesModule } from './stories/stories.module';
     BrowserModule,
     FormsModule,
     HttpModule,
+    SharedModule,
     StoriesModule
   ],
   declarations: [AppComponent],
