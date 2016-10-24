@@ -11,14 +11,15 @@ import { Story } from './story.model';
 @Injectable()
 export class StoryService {
 
-  constructor(private angularFire: AngularFire) { }
+  constructor(private angularFire: AngularFire) {
+  }
 
   /**
    * Add story.
    * @param {Story} story - Story.
    */
-  addStory(story: Story): void {
-    this.angularFire.database.object(`/stories/${story.id}`).set({
+  addPublicStory(story: Story): void {
+    this.angularFire.database.object(`/stories/public/${story.id}`).set({
       id: story.id,
       title: story.title,
       content: story.content,
@@ -28,15 +29,27 @@ export class StoryService {
   }
 
   /**
+   * Add private story.
+   * @param story
+   */
+  addPrivateStory(story: Story): void {
+    this.angularFire.database.object(`/stories/private/${story.id}`).set({
+      id: story.id,
+      title: story.title,
+      content: story.content
+    });
+  }
+
+  /**
    * Find story by keyword.
    * @param {string} keyword - Keyword.
    * @returns {FirebaseListObservable<any[]>} - Stories with keyword matched.
    */
-  findStories(keyword: string): FirebaseListObservable<Story[]> {
+  findPublicStories(keyword: string): FirebaseListObservable<Story[]> {
     const keywordSubject = new Subject();
     keywordSubject.next(keyword);
 
-    return this.angularFire.database.list('/stories', {
+    return this.angularFire.database.list('/stories/public', {
       // REVIEW: Replace `orderByChild` property.
       query: {
         orderByChild: 'id',
@@ -47,11 +60,20 @@ export class StoryService {
   }
 
   /**
+   * Get private stories.
+   * @returns {FirebaseListObservable<any[]>}
+   */
+  getPrivateStories(): FirebaseListObservable<Story[]> {
+    return this.angularFire.database.list('/stories/private');
+  }
+
+
+  /**
    * Get stories.
    * @returns {FirebaseListObservable<any[]>} - Stories.
    */
-  getStories(): FirebaseListObservable<Story[]> {
-    return this.angularFire.database.list('/stories');
+  getPublicStories(): FirebaseListObservable<Story[]> {
+    return this.angularFire.database.list('/stories/public');
   }
 
   /**
@@ -59,36 +81,36 @@ export class StoryService {
    * @param {string} id - Story ID.
    * @returns {FirebaseObjectObservable<Story>} - Story with ID matched.
    */
-  getStory(id: string): FirebaseObjectObservable<Story> {
-    return this.angularFire.database.object(`/stories/${id}`);
+  getPublicStory(id: string): FirebaseObjectObservable<Story> {
+    return this.angularFire.database.object(`/stories/public/${id}`);
   }
 
   /**
    * initialize stories.
    */
-  initStories(): void {
-    this.addStory({
+  initPublicStories(): void {
+    this.addPublicStory({
       id: 'aaa',
       title: 'Alpha',
       content: 'Alpha content',
       imgUrl: 'https://angular.io/resources/images/logos/angular2/angular.svg'
     });
 
-    this.addStory({
+    this.addPublicStory({
       id: 'bbb',
       title: 'Bravo',
       content: 'bravo content',
       imgUrl: 'https://angular.io/resources/images/logos/angular2/angular.svg'
     });
 
-    this.addStory({
+    this.addPublicStory({
       id: 'ccc',
       title: 'Charlie',
       content: 'Charlie content',
       imgUrl: 'https://angular.io/resources/images/logos/angular2/angular.svg'
     });
 
-    this.addStory({
+    this.addPublicStory({
       id: 'ddd',
       title: 'Delta',
       content: 'Delta content',

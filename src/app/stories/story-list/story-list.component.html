@@ -1,14 +1,29 @@
 <h1>Story List</h1>
 
 <div>
-  <ul>
-    <li *ngFor="let story of stories | async">
-      {{story | json}}
-    </li>
-  </ul>
+  <h2>Public Stories</h2>
+  <div>
+    <ul>
+      <li *ngFor="let story of publicStories | async">
+        {{story | json}}
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <h2>Story Detail</h2>
+    <span>{{publicStory | async | json}}</span>
+  </div>
 </div>
 
 <div>
-  <h2>Story Detail</h2>
-  <span>{{story | async | json}}</span>
+  <h2>Private Stories</h2>
+
+  <ul>
+    <li *ngFor="let story of privateStories | async">
+      {{story | json}}
+    </li>
+  </ul>
+
+  <button (click)="onAddPrivateStory()">Add Private Story</button>
 </div>

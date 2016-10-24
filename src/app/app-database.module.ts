@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
 
-import { firebaseConfig } from '../environments/firebase-config';
+import { firebaseConfig } from '../environments/firebase.config';
 
 @NgModule({
   imports: [

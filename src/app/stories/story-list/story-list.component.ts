@@ -11,17 +11,28 @@ import { StoryService } from '../shared/story.service';
 })
 export class StoryListComponent implements OnInit {
   private keyword: string = 'ccc';  // REVIEW: Change keyword.
-  private matchedStories: FirebaseListObservable<Story[]>;
-  private stories: FirebaseListObservable<Story[]>;
-  private story: FirebaseObjectObservable<Story>;
+  private matchedPublicStories: FirebaseListObservable<Story[]>;
+  private publicStories: FirebaseListObservable<Story[]>;
+  private publicStory: FirebaseObjectObservable<Story>;
+  private privateStories: FirebaseListObservable<Story[]>;
 
   constructor(private storyService: StoryService) { }
 
   ngOnInit() {
-    this.storyService.initStories();
+    this.publicStories = this.storyService.getPublicStories();
+    this.publicStory = this.storyService.getPublicStory(this.keyword);
+    this.matchedPublicStories = this.storyService.findPublicStories(this.keyword);
 
-    this.stories = this.storyService.getStories();
-    this.story = this.storyService.getStory(this.keyword);
-    this.matchedStories = this.storyService.findStories(this.keyword);
+    this.privateStories = this.storyService.getPrivateStories();
+  }
+
+  onAddPrivateStory(): void {
+
+    // Create random story.
+    this.storyService.addPrivateStory({
+      id: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5),
+      title: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5),
+      content: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5)
+    });
   }
 }
