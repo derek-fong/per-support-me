@@ -1,0 +1,14 @@
+{
+  "rules": {
+    "stories": {
+      "public": {
+        ".read": true,
+        ".write": "auth.token.role === 'admin'"
+      },
+      "private": {
+        ".read": "auth.token.role === 'admin'",
+        ".write": "auth.token.role === 'admin'"
+      }
+    }
+  }
+}
