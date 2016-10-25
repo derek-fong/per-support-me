@@ -4,10 +4,12 @@
   </div>
   <div class="card-content">
     <span class="activator grey-text text-darken-4">{{story.title}}<i class="material-icons right">more_vert</i></span>
-    <p><a href="#">Read Full Story</a></p>
+    <p><a materialize="leanModal" [materializeParams]="[{dismissible: true}]" class="modal-trigger" [href]="'#' + storyDetailElementID">Read Full Story</a></p>
   </div>
   <div class="card-reveal">
     <span class="card-title grey-text text-darken-4">{{story.title}}<i class="material-icons right">close</i></span>
     <p>{{story.content}}</p>
   </div>
 </div>
+
+<tk-story-detail [story]="story" [elementID]="storyDetailElementID"></tk-story-detail>
