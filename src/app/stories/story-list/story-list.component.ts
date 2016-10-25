@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import { toast } from 'angular2-materialize';
 
 import { Story } from '../shared/story.model';
 import { StoryService } from '../shared/story.service';

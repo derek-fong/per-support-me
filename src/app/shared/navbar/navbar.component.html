@@ -1,2 +1,9 @@
-<button *ngIf="!authService.isAuthenticated" (click)="onLogin()">Login</button>
-<button *ngIf="authService.isAuthenticated" (click)="onLogout()">Logout</button>
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand brand-logo">Support Me</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li *ngIf="!authService.isAuthenticated"><a (click)="onLogin()">Login</a></li>
+      <li *ngIf="authService.isAuthenticated"><a (click)="onLogout()">Logout</a></li>
+    </ul>
+  </div>
+</nav>

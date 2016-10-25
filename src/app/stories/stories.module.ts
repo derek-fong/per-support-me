@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StoriesComponent } from './stories.component';
 
+import { StoriesComponent } from './stories.component';
 import { StoriesRoutingModule } from './stories-routing.module';
 import { StoryService } from './shared/story.service';
 import { StoryListComponent } from './story-list/story-list.component';
@@ -13,8 +13,7 @@ import { StoryListComponent } from './story-list/story-list.component';
   ],
   declarations: [
     StoriesComponent,
-    StoryListComponent,
-
+    StoryListComponent
   ],
   providers: [StoryService]
 })
