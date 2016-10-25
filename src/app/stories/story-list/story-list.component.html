@@ -1,29 +1,5 @@
-<h1>Story List</h1>
-
-<div>
-  <h2>Public Stories</h2>
-  <div>
-    <ul>
-      <li *ngFor="let story of publicStories | async">
-        {{story | json}}
-      </li>
-    </ul>
+<div class="stories-container">
+  <div class="row">
+    <tk-story-card class="col s3" *ngFor="let story of publicStories | async" [story]="story"></tk-story-card>
   </div>
-
-  <div>
-    <h2>Story Detail</h2>
-    <span>{{publicStory | async | json}}</span>
-  </div>
-</div>
-
-<div>
-  <h2>Private Stories</h2>
-
-  <ul>
-    <li *ngFor="let story of privateStories | async">
-      {{story | json}}
-    </li>
-  </ul>
-
-  <button (click)="onAddPrivateStory()">Add Private Story</button>
 </div>

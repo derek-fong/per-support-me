@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { StoriesComponent } from './stories.component';
 import { StoriesRoutingModule } from './stories-routing.module';
 import { StoryService } from './shared/story.service';
+import { StoryCardComponent } from './story-card/story-card.component';
 import { StoryListComponent } from './story-list/story-list.component';
 
 @NgModule({
@@ -13,6 +14,7 @@ import { StoryListComponent } from './story-list/story-list.component';
   ],
   declarations: [
     StoriesComponent,
+    StoryCardComponent,
     StoryListComponent
   ],
   providers: [StoryService]

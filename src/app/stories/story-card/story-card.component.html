@@ -1,0 +1,13 @@
+<div class="card card-container">
+  <div class="card-image waves-effect waves-block waves-light">
+    <img class="activator" [src]="story.imgUrl">
+  </div>
+  <div class="card-content">
+    <span class="activator grey-text text-darken-4">{{story.title}}<i class="material-icons right">more_vert</i></span>
+    <p><a href="#">Read Full Story</a></p>
+  </div>
+  <div class="card-reveal">
+    <span class="card-title grey-text text-darken-4">{{story.title}}<i class="material-icons right">close</i></span>
+    <p>{{story.content}}</p>
+  </div>
+</div>
