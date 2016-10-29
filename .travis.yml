@@ -25,3 +25,6 @@ before_script:
   - ng build
 
 script: karma start karma.conf.js --single-run
+
+after_script:
+  - cat ./coverage/coverage.lcov | ./node_modules/coveralls/bin/coveralls.js
