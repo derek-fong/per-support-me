@@ -1,8 +1,9 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
+import { Story } from '../shared/story.model';
 import { StoryDetailComponent } from './story-detail.component';
 
 describe('StoryDetailComponent', () => {
@@ -19,6 +20,9 @@ describe('StoryDetailComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(StoryDetailComponent);
     component = fixture.componentInstance;
+
+    component.story = new Story();
+    component.story.title = 'Test Title';
     fixture.detectChanges();
   });
 

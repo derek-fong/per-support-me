@@ -1,4 +1,4 @@
-export interface Story {
+export class Story {
   id?: string;
   content?: string;
   createdAt?: Date;
