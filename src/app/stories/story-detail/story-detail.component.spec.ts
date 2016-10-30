@@ -1,9 +1,8 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { Story } from '../shared/story.model';
 import { StoryDetailComponent } from './story-detail.component';
 
 describe('StoryDetailComponent', () => {
@@ -21,12 +20,26 @@ describe('StoryDetailComponent', () => {
     fixture = TestBed.createComponent(StoryDetailComponent);
     component = fixture.componentInstance;
 
-    component.story = new Story();
-    component.story.title = 'Test Title';
+    component.story = {
+      title: 'Test Title',
+      content: 'Test Content'
+    };
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should show story title as "Test Title"', () => {
+    const debugElement: DebugElement = fixture.debugElement.query(By.css('#story-title'));
+
+    expect(debugElement.nativeElement.textContent).toContain(component.story.title);
+  });
+
+  it('should show story content as "Test Content"', () => {
+    const debugElement: DebugElement = fixture.debugElement.query((By.css('#story-content')));
+
+    expect(debugElement.nativeElement.textContent).toBe(component.story.content);
   });
 });

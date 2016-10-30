@@ -21,8 +21,9 @@ describe('StoryCardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(StoryCardComponent);
     component = fixture.componentInstance;
-    component.story = new Story();
-    component.story.imgUrl = 'favicon.ico';
+    component.story = {
+      imgUrl: 'favicon.ico'
+    };
     fixture.detectChanges();
   });
 
