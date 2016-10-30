@@ -18,12 +18,12 @@ describe('Service: Story', () => {
       providers: [
         FIREBASE_PROVIDERS,
         defaultFirebase(angularFireConfig),
-        StoryService,
+        StoryService
       ]
     });
   });
 
-  it('should ...', inject([StoryService], (service: StoryService) => {
-    expect(service).toBeTruthy();
+  it('instantiate service when inject service', inject([StoryService], (storyService: StoryService) => {
+    expect(storyService instanceof StoryService).toBeTruthy();
   }));
 });
