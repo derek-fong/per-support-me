@@ -13,8 +13,8 @@ describe('NavbarComponent', () => {
   beforeEach(async(() => {
 
     class MockAuthService {
-      login(): void { }
-      logout(): void { }
+      login(): void { return undefined; }
+      logout(): void { return undefined; }
     }
 
     TestBed.configureTestingModule({

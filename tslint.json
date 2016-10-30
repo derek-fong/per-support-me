@@ -44,6 +44,7 @@
     "no-empty": false,
     "no-eval": true,
     "no-inferrable-types": true,
+    "no-parameter-properties": false,
     "no-shadowed-variable": true,
     "no-string-literal": false,
     "no-switch-case-fall-through": true,
@@ -69,6 +70,7 @@
     "semicolon": [
       "always"
     ],
+    "trailing-comma": [true, {"multiline": "never", "singleline": "never"}],
     "triple-equals": [
       true,
       "allow-null-check"
