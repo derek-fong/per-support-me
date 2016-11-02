@@ -1,29 +1,49 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async, inject } from '@angular/core/testing';
-import { FIREBASE_PROVIDERS, AngularFire, defaultFirebase } from 'angularfire2';
+import { NgModule } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+import {AngularFire, AngularFireModule} from 'angularfire2';
 
 import { StoryService } from './story.service';
 
 describe('Service: Story', () => {
-  beforeEach(() => {
-    const angularFireConfig = {
-      apiKey: 'test_api_key',
-      authDomain: 'test.firebaseapp.com',
-      databaseURL: 'https://test.firebaseio.com',
-      storageBucket: 'test.appspot.com',
-    };
+  let storyService: StoryService;
 
+  @NgModule({
+    imports: [
+      AngularFireModule.initializeApp({
+        apiKey: 'test_api_key',
+        authDomain: 'test.firebaseapp.com',
+        databaseURL: 'https://test.firebaseio.com',
+        storageBucket: 'test.appspot.com',
+      })
+    ],
+    exports: [AngularFireModule]
+  })
+  class MockDataBaseModule { }
+
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        FIREBASE_PROVIDERS,
-        defaultFirebase(angularFireConfig),
-        StoryService
-      ]
+      imports: [MockDataBaseModule],
+      providers: [StoryService]
     });
+
+    storyService = new StoryService(AngularFire);
   });
 
-  it('instantiate service when inject service', inject([StoryService], (storyService: StoryService) => {
+  it('can instantiate service when inject service', () => {
     expect(storyService instanceof StoryService).toBeTruthy();
-  }));
+  });
+
+  describe('when getPublicStories', () => {
+    it('should get public stories', () => {
+      spyOn(storyService, 'getPublicStories').and.callFake(() => {
+        return 123;
+      });
+
+      let result = storyService.getPublicStories();
+
+      expect(result).toEqual(123);
+    });
+  });
 });
