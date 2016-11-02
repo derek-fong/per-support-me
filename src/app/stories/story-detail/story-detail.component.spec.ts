@@ -19,10 +19,27 @@ describe('StoryDetailComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(StoryDetailComponent);
     component = fixture.componentInstance;
+
+    component.story = {
+      title: 'Test Title',
+      content: 'Test Content'
+    };
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should show story title as "Test Title"', () => {
+    const debugElement: DebugElement = fixture.debugElement.query(By.css('#story-title'));
+
+    expect(debugElement.nativeElement.textContent).toContain(component.story.title);
+  });
+
+  it('should show story content as "Test Content"', () => {
+    const debugElement: DebugElement = fixture.debugElement.query((By.css('#story-content')));
+
+    expect(debugElement.nativeElement.textContent).toBe(component.story.content);
   });
 });
