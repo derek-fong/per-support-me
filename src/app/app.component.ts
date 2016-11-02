@@ -2,9 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'tk-app',
-  template: `
-    <tk-navbar></tk-navbar>
-    <router-outlet></router-outlet>
-  `
+  styleUrls: ['./app.component.scss'],
+  templateUrl: './app.component.html'
 })
 export class AppComponent { }

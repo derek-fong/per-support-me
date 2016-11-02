@@ -8,6 +8,7 @@ import { AppDatabaseModule } from './app-database.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
+import { ServiceProvidersModule } from './service-providers/service-providers.module';
 import { StoriesModule } from './stories/stories.module';
 
 @NgModule({
@@ -18,6 +19,7 @@ import { StoriesModule } from './stories/stories.module';
     BrowserModule,
     FormsModule,
     HttpModule,
+    ServiceProvidersModule,
     SharedModule,
     StoriesModule
   ],
