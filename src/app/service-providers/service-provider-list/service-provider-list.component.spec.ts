@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { ServiceProviderListComponent } from './service-provider-list.component';
+import { FilterService } from '../../core/shared/filter.service';
 
 describe('ServiceProviderListComponent', () => {
   let component: ServiceProviderListComponent;
@@ -11,7 +12,8 @@ describe('ServiceProviderListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ServiceProviderListComponent ]
+      declarations: [ ServiceProviderListComponent ],
+      providers: [FilterService]
     })
     .compileComponents();
   }));

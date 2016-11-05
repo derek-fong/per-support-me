@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
-import { toast } from 'angular2-materialize';
 
 import { Story } from '../shared/story.model';
 import { StoryService } from '../shared/story.service';
+
+import { FilterService } from '../../core/shared/filter.service';
 
 @Component({
   selector: 'tk-story-list',
@@ -17,9 +18,12 @@ export class StoryListComponent implements OnInit {
   private publicStory: FirebaseObjectObservable<Story>;
   private privateStories: FirebaseListObservable<Story[]>;
 
-  constructor(private storyService: StoryService) { }
+  constructor(private filterService: FilterService,
+              private storyService: StoryService) { }
 
   ngOnInit() {
+    this.filterService.setContentType('stories');
+
     this.publicStories = this.storyService.getPublicStories();
     this.publicStory = this.storyService.getPublicStory(this.keyword);
     this.matchedPublicStories = this.storyService.findPublicStories(this.keyword);
@@ -28,7 +32,6 @@ export class StoryListComponent implements OnInit {
   }
 
   onAddPrivateStory(): void {
-
     // Create random story.
     this.storyService.addPrivateStory({
       id: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5),

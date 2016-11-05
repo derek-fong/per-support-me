@@ -13,6 +13,7 @@ import { Observable, Observer } from 'rxjs/Rx';
 import { StoryListComponent } from './story-list.component';
 import { Story } from '../shared/story.model';
 import { StoryService } from '../shared/story.service';
+import { FilterService } from '../../core/shared/filter.service';
 
 describe('StoryListComponent', () => {
   let component: StoryListComponent;
@@ -54,7 +55,9 @@ describe('StoryListComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [ StoryListComponent ],
-      providers: [ {provide: StoryService, useValue: storyServiceStub } ],
+      providers: [
+        FilterService,
+        { provide: StoryService, useValue: storyServiceStub } ],
       schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();

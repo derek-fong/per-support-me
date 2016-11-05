@@ -6,6 +6,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { SideNavComponent } from './side-nav.component';
+import { FilterService } from '../shared/filter.service';
 
 describe('SideNavComponent', () => {
   let component: SideNavComponent;
@@ -14,6 +15,7 @@ describe('SideNavComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SideNavComponent ],
+      providers: [FilterService],
       schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
