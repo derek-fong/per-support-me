@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
-
-import { NavbarComponent } from './navbar/navbar.component';
-import { NavbarModule } from './navbar/navbar.module';
+import { CommonModule } from '@angular/common';
+import { MaterializeDirective } from 'angular2-materialize';
 
 @NgModule({
-  imports: [NavbarModule],
-  exports: [NavbarComponent]
+  imports: [CommonModule],
+  declarations: [MaterializeDirective],
+  exports: [
+    CommonModule,
+    MaterializeDirective,
+  ]
 })
 export class SharedModule { }

@@ -1,0 +1,13 @@
+<ul [id]="elementID" class="side-nav">
+  <li>
+    <div class="tags-container">
+      <p>SideNav Works! </p>
+    </div>
+  </li>
+</ul>
+
+<a materialize="sideNav"
+   href="#"
+   [materializeParams]="[{edge: 'left'}]"
+   [attr.data-activates]="elementID"><i class="material-icons">view_list</i>
+</a>

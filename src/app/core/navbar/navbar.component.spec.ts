@@ -1,4 +1,6 @@
 /* tslint:disable:no-unused-variable */
+
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
@@ -19,7 +21,8 @@ describe('NavbarComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [ NavbarComponent ],
-      providers: [{ provide: AuthService, useClass: MockAuthService }]
+      providers: [{ provide: AuthService, useClass: MockAuthService }],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));
