@@ -9,6 +9,7 @@ import { FilterService } from '../shared/filter.service';
 })
 export class SideNavComponent implements OnInit {
   private elementID: string = 'side-nav-left';
+  private keyword: string;
 
   constructor(private filterService: FilterService) { }
 
@@ -16,6 +17,10 @@ export class SideNavComponent implements OnInit {
     this.filterService.contentType$.subscribe((res: string) => {
       console.log(res);
     });
+    this.filterService.setKeyword(this.keyword);
+  }
 
+  onKeywordChange(keyword: string) {
+    this.filterService.setKeyword(keyword);
   }
 }

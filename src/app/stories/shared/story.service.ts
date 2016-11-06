@@ -1,18 +1,20 @@
+import * as _ from 'lodash';
 import { Injectable } from '@angular/core';
 import {
   AngularFire,
   FirebaseListObservable,
   FirebaseObjectObservable
 } from 'angularfire2';
-import { Subject } from 'rxjs/Subject';
+import { Observable, Subject } from 'rxjs/Rx';
 
 import { Story } from './story.model';
+import { FilterService } from '../../core/shared/filter.service';
 
 @Injectable()
 export class StoryService {
 
-  constructor(private angularFire: AngularFire) {
-  }
+  constructor(private angularFire: AngularFire,
+              private filterService: FilterService) { }
 
   /**
    * Add story.
@@ -60,6 +62,20 @@ export class StoryService {
   }
 
   /**
+   * GEt filtered stories.
+   * @returns {Observable<Story[]>} - Filtered stories.
+   */
+  getFilteredStories$(): Observable<Story[]> {
+    return Observable.combineLatest(
+      this.getPublicStories$(),
+      this.filterService.keyword$,
+      (stories: Story[], keyword: string) => {
+        return this.filterByKeyword(stories, keyword);
+      }
+    );
+  }
+
+  /**
    * Get private stories.
    * @returns {FirebaseListObservable<any[]>}
    */
@@ -72,7 +88,7 @@ export class StoryService {
    * Get stories.
    * @returns {FirebaseListObservable<any[]>} - Stories.
    */
-  getPublicStories(): FirebaseListObservable<Story[]> {
+  getPublicStories$(): FirebaseListObservable<Story[]> {
     return this.angularFire.database.list('/stories/public');
   }
 
@@ -86,35 +102,17 @@ export class StoryService {
   }
 
   /**
-   * initialize stories.
+   * Filter stories by keyword.
+   * @param {Story[]} stories - Stories.
+   * @param {string} keyword - Keyword.
+   * @returns {Story[]} - Stories that matches keyword.
    */
-  initPublicStories(): void {
-    this.addPublicStory({
-      id: 'aaa',
-      title: 'Alpha',
-      content: 'Alpha content',
-      imgUrl: 'https://angular.io/resources/images/logos/angular2/angular.svg'
-    });
-
-    this.addPublicStory({
-      id: 'bbb',
-      title: 'Bravo',
-      content: 'bravo content',
-      imgUrl: 'https://angular.io/resources/images/logos/angular2/angular.svg'
-    });
-
-    this.addPublicStory({
-      id: 'ccc',
-      title: 'Charlie',
-      content: 'Charlie content',
-      imgUrl: 'https://angular.io/resources/images/logos/angular2/angular.svg'
-    });
-
-    this.addPublicStory({
-      id: 'ddd',
-      title: 'Delta',
-      content: 'Delta content',
-      imgUrl: 'https://angular.io/resources/images/logos/angular2/angular.svg'
-    });
+  private filterByKeyword(stories: Story[], keyword: string): Story[] {
+    return (keyword && keyword !== '') ? _.filter(stories, (story: Story) => {
+      return story.alias.indexOf(keyword) !== -1 ||
+        story.content.indexOf(keyword) !== -1 ||
+        story.title.indexOf(keyword) !== -1 ||
+        story.tags.indexOf(keyword) !== -1;
+    }) : stories;
   }
 }

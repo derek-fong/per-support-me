@@ -1,10 +1,20 @@
-<ul [id]="elementID" class="side-nav">
-  <li>
-    <div class="tags-container">
-      <p>SideNav Works! </p>
+<div [id]="elementID" class="side-nav">
+  <div class="tags-container">
+    <p>SideNav Works! </p>
+  </div>
+  <div class="row keyword-container">
+    <div class="input-field">
+      <input id="input-keyword"
+             class="validate"
+             type="text"
+             [(ngModel)]="keyword"
+             (ngModelChange)="onKeywordChange($event)"
+             required>
+      <label for="input-keyword">Search by Keyword</label>
     </div>
-  </li>
-</ul>
+
+  </div>
+</div>
 
 <a materialize="sideNav"
    href="#"

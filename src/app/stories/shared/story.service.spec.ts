@@ -35,13 +35,13 @@ describe('Service: Story', () => {
     expect(storyService instanceof StoryService).toBeTruthy();
   });
 
-  describe('when getPublicStories', () => {
+  describe('when getPublicStories$', () => {
     it('should get public stories', () => {
-      spyOn(storyService, 'getPublicStories').and.callFake(() => {
+      spyOn(storyService, 'getPublicStories$').and.callFake(() => {
         return 123;
       });
 
-      let result = storyService.getPublicStories();
+      let result = storyService.getPublicStories$();
 
       expect(result).toEqual(123);
     });

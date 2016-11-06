@@ -22,17 +22,16 @@ describe('StoryListComponent', () => {
   let storyServiceStub: {
     addPrivateStory: Function,
     findPublicStories: Function,
+    getFilteredStories$: Function,
     getPrivateStories: Function,
     getPublicStory: Function,
-    getPublicStories: Function,
   };
 
   beforeEach(async(() => {
-
     const mockStory: Story = { id: 'ss000', title: 'Test Story Title', content: 'Test story content' };
 
     storyServiceStub = {
-      getPublicStories: () => {
+      getFilteredStories$: () => {
         return new Observable((observer: Observer<Story[]>) => {
           observer.next([mockStory, mockStory]);
           observer.complete();
