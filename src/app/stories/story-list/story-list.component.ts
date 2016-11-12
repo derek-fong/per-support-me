@@ -1,9 +1,5 @@
-import {
-  Component,
-  OnInit,
-  OnDestroy
-} from '@angular/core';
-import { Observable, Subscription } from 'rxjs/Rx';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 
 import { Story } from '../shared/story.model';
 import { StoryService } from '../shared/story.service';
@@ -14,9 +10,8 @@ import { FilterService } from '../../core/shared/filter.service';
   templateUrl: './story-list.component.html',
   styleUrls: ['./story-list.component.scss']
 })
-export class StoryListComponent implements OnInit, OnDestroy {
+export class StoryListComponent implements OnInit {
   private publicStories: Observable<Story[]>;
-  private tagsSub: Subscription;
 
   constructor(private filterService: FilterService,
               private storyService: StoryService) { }
@@ -24,16 +19,5 @@ export class StoryListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.filterService.setContentType('stories');
     this.publicStories = this.storyService.getFilteredStories$();
-
-    // REVIEW: Debug only
-    this.tagsSub = this.filterService.tags$.subscribe((res: string[]) => {
-      console.log(res);
-    });
-  }
-
-  ngOnDestroy(): void {
-    if (this.tagsSub) {
-      this.tagsSub.unsubscribe();
-    }
   }
 }

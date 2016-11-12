@@ -1,4 +1,3 @@
-import * as _ from 'lodash';
 import { Injectable } from '@angular/core';
 import {
   AngularFire,
@@ -69,8 +68,11 @@ export class StoryService {
     return Observable.combineLatest(
       this.getPublicStories$(),
       this.filterService.keyword$,
-      (stories: Story[], keyword: string) => {
-        return this.filterByKeyword(stories, keyword);
+      this.filterService.tags$,
+      (stories: Story[], keyword: string, tags: string[]) => {
+        let filteredStories: Story[] = this.filterService.filterByKeyword(stories, keyword);
+        filteredStories = this.filterService.filterByTags(filteredStories, tags);
+        return filteredStories;
       }
     );
   }
@@ -82,7 +84,6 @@ export class StoryService {
   getPrivateStories(): FirebaseListObservable<Story[]> {
     return this.angularFire.database.list('/stories/private');
   }
-
 
   /**
    * Get stories.
@@ -99,20 +100,5 @@ export class StoryService {
    */
   getPublicStory(id: string): FirebaseObjectObservable<Story> {
     return this.angularFire.database.object(`/stories/public/${id}`);
-  }
-
-  /**
-   * Filter stories by keyword.
-   * @param {Story[]} stories - Stories.
-   * @param {string} keyword - Keyword.
-   * @returns {Story[]} - Stories that matches keyword.
-   */
-  private filterByKeyword(stories: Story[], keyword: string): Story[] {
-    return (keyword && keyword !== '') ? _.filter(stories, (story: Story) => {
-      return story.alias.indexOf(keyword) !== -1 ||
-        story.content.indexOf(keyword) !== -1 ||
-        story.title.indexOf(keyword) !== -1 ||
-        story.tags.indexOf(keyword) !== -1;
-    }) : stories;
   }
 }
