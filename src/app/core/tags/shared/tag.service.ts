@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { AngularFire } from 'angularfire2';
@@ -29,7 +30,7 @@ export class TagService {
         }
 
         tagCollections.push({
-          category: category.$key,
+          category: _.upperCase(category.$key),
           tags: tags
         });
       }

@@ -2,7 +2,7 @@
   <span>
     <i *ngIf="isCollapsed" class="fa fa-caret-right" aria-hidden="true"></i>
     <i *ngIf="!isCollapsed" class="fa fa-caret-down" aria-hidden="true"></i>
-    <strong>{{tagCollection.category | uppercase}}</strong>
+    <strong>{{tagCollection.category}}</strong>
   </span>
 </a>
 <ul [hidden]="isCollapsed">

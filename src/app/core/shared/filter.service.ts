@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/Rx';
 
@@ -37,10 +38,11 @@ export class FilterService {
    * @param {Tag} tag - Tag object.
    */
   updateTags(tag: Tag): void {
+    const tagName: string = _.kebabCase(tag.name);
     if (tag.isSelected) {
-      this.selectedTags.push(tag.name);
+      this.selectedTags.push(tagName);
     } else {
-      this.selectedTags = this.selectedTags.filter(item => item !== tag.name);
+      this.selectedTags = this.selectedTags.filter(item => item !== tagName);
     }
 
     this.tags.next(this.selectedTags);
