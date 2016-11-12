@@ -18,11 +18,12 @@
       "prefix": "tk",
       "mobile": false,
       "styles": [
-        "styles.scss"
+        "styles.scss",
+        "../node_modules/font-awesome/css/font-awesome.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
-        "../node_modules/materialize-css/bin/materialize.js"
+        "../node_modules/materialize-css/dist/js/materialize.js"
       ],
       "environments": {
         "source": "environments/environment.ts",
@@ -32,6 +33,7 @@
     }
   ],
   "addons": [
+    "../node_modules/font-awesome/fonts/*.+(otf|eot|svg|ttf|woff|woff2)"
   ],
   "packages": [
   ],

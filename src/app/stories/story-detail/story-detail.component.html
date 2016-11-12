@@ -1,5 +1,9 @@
 <!-- Modal Structure -->
-<div [attr.id]="elementID" class="modal">
+<div [attr.id]="elementID"
+     class="modal"
+     materialize="modal"
+     [materializeActions]="modalActions"
+     [materializeParams]="[{dismissible: true}]">
   <div class="modal-content">
     <h4 id="story-title">{{story.title}}</h4>
     <p id="story-content">{{story.content}}</p>

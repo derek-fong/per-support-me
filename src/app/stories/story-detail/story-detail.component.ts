@@ -1,4 +1,8 @@
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input
+} from '@angular/core';
 
 import { Story } from '../shared/story.model';
 
@@ -10,6 +14,7 @@ import { Story } from '../shared/story.model';
 export class StoryDetailComponent {
   @Input() story: Story;
   @Input() elementID: string;
+  @Input() modalActions: EventEmitter<any>;
 
   constructor() { }
 }

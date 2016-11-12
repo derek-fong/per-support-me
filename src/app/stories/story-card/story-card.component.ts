@@ -1,5 +1,6 @@
 import {
   Component,
+  EventEmitter,
   OnChanges,
   Input
 } from '@angular/core';
@@ -13,6 +14,7 @@ import { Story } from '../shared/story.model';
 })
 export class StoryCardComponent implements OnChanges {
   @Input() story: Story;
+  private modalActions = new EventEmitter<any>();
   private storyDetailElementID: string;
 
   constructor() { }
@@ -21,5 +23,9 @@ export class StoryCardComponent implements OnChanges {
     if (this.story && Object.prototype.hasOwnProperty.call(this.story, 'id')) {
       this.storyDetailElementID = `story-${this.story.id}`;
     }
+  }
+
+  onOpenModal() {
+    this.modalActions.emit({ action: 'modal', params: ['open'] });
   }
 }
