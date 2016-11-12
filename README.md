@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/derek-fong/per-support-me.svg?branch=ng2)](https://travis-ci.org/derek-fong/per-support-me)
-[![Coverage Status](https://coveralls.io/repos/github/derek-fong/per-support-me/badge.svg)](https://coveralls.io/github/derek-fong/per-support-me)
+[![Coverage Status](https://coveralls.io/repos/github/derek-fong/per-support-me/badge.svg?branch=ng2)](https://coveralls.io/github/derek-fong/per-support-me?branch=ng2)
 [![bitHound Overall Score](https://www.bithound.io/github/derek-fong/per-support-me/badges/score.svg)](https://www.bithound.io/github/derek-fong/per-support-me)
 [![Join the chat at https://gitter.im/per-support-me/Lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/per-support-me/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
