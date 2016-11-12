@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let tagCollection of tagCollections$ | async">
+    <tk-tag-collection [isCollapsed]="true" [tagCollection]="tagCollection"></tk-tag-collection>
+  </li>
+</ul>

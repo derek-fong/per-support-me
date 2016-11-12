@@ -1,0 +1,18 @@
+<a href="javascript: void(0)" (click)="onToggleTags()">
+  <span>
+    <i *ngIf="isCollapsed" class="fa fa-caret-right" aria-hidden="true"></i>
+    <i *ngIf="!isCollapsed" class="fa fa-caret-down" aria-hidden="true"></i>
+    <strong>{{tagCollection.category | uppercase}}</strong>
+  </span>
+</a>
+<ul [hidden]="isCollapsed">
+  <li *ngFor="let tag of tagCollection.tags">
+    <a href="javascript: void(0)" (click)="onToggleTagSelect(tag)">
+      <span>
+        <i *ngIf="tag.isSelected" class="fa fa-check" aria-hidden="true"></i>
+        <i *ngIf="!tag.isSelected" class="fa fa-square-o" aria-hidden="true"></i>
+         {{tag.name}}
+      </span>
+    </a>
+  </li>
+</ul>
