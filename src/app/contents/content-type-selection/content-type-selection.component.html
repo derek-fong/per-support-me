@@ -1,0 +1,12 @@
+<div class="row">
+  <span class="col">Content Type</span>
+  <div *ngFor="let contentType of contentTypes" class="col">
+    <input class="with-gap"
+           type="radio"
+           [attr.checked]="contentType.isChecked"
+           [attr.id]="contentType.id"
+           [attr.name]="contentType.name"
+           (click)="onSelectContentType(contentType.value)" />
+    <label [attr.for]="contentType.id">{{contentType.desc}}</label>
+  </div>
+</div>

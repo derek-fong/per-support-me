@@ -12,4 +12,7 @@ export class ContentCreationComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSelectContentType(contentType: string): void {
+    console.log(`${contentType} selected. `);
+  }
 }

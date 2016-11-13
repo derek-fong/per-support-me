@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 
-
 import { ContentsRoutingModule } from './contents-routing.module';
 import { ContentsComponent } from './contents.component';
 import { ContentCreationComponent } from './content-creation/content-creation.component';
 import { SharedModule } from '../shared/shared.module';
+import { ContentTypeSelectionComponent } from './content-type-selection/content-type-selection.component';
 
 @NgModule({
   imports: [
@@ -13,7 +13,8 @@ import { SharedModule } from '../shared/shared.module';
   ],
   declarations: [
     ContentsComponent,
-    ContentCreationComponent
+    ContentCreationComponent,
+    ContentTypeSelectionComponent
   ]
 })
 export class ContentsModule { }
