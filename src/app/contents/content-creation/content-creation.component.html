@@ -1,4 +1,7 @@
 <div class="content-creation-container">
-  <tk-content-type-selection (selectContentType)="onSelectContentType($event)">
-  </tk-content-type-selection>
+  <tk-content-type-selection (selectContentType)="onSelectContentType($event)"></tk-content-type-selection>
+
+  <tk-content-story *ngIf="selectedContentType === 'story'"></tk-content-story>
+  
+  <tk-content-service-provider *ngIf="selectedContentType === 'service-provider'"></tk-content-service-provider>
 </div>

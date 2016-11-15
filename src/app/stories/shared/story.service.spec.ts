@@ -28,7 +28,7 @@ describe('Service: Story', () => {
       providers: [StoryService]
     });
 
-    storyService = new StoryService(AngularFire);
+    storyService = new StoryService(AngularFire, undefined);
   });
 
   it('can instantiate service when inject service', () => {

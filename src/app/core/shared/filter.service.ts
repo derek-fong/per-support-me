@@ -84,8 +84,8 @@ export class FilterService {
 
   /**
    * Compare if an array contains another array.
-   * @param {string} needle - Sub-array.
-   * @param {string} haystack - Array to match with.
+   * @param {string[]} needle - Sub-array.
+   * @param {string[]} haystack - Array to match with.
    * @returns {boolean} - `true` if `haystack` contains `needle`; `false` otherwise.
    */
   private matchTags(needle: string[], haystack: string[]) {

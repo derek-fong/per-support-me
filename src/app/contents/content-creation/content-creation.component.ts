@@ -1,18 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'tk-content-creation',
   templateUrl: './content-creation.component.html',
   styleUrls: ['./content-creation.component.scss']
 })
-export class ContentCreationComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+export class ContentCreationComponent {
+  private selectedContentType: string;
 
   onSelectContentType(contentType: string): void {
-    console.log(`${contentType} selected. `);
+    this.selectedContentType = contentType;
   }
 }

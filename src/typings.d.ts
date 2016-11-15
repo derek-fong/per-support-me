@@ -3,3 +3,7 @@
 
 declare var require: any;
 declare var System: any;
+
+declare namespace firebase.database.ServerValue {
+  const TIMESTAMP: any;
+}

@@ -1,0 +1,62 @@
+<form [formGroup]="storyCreationForm"
+      (ngSubmit)="onCreateStory(storyCreationForm.value)">
+  <div class="input-field">
+    <label for="input-alias">Alias</label>
+    <input id="input-alias"
+           class="validate"
+           type="text"
+           formControlName="alias"
+           required />
+  </div>
+  <div class="input-field">
+    <label for="input-title">Title</label>
+    <input id="input-title"
+           class="validate"
+           type="text"
+           formControlName="title"
+           length="100"
+           maxlength="100"
+           required />
+  </div>
+  <div class="input-field">
+    <label for="input-content">Content</label>
+    <textarea id="input-content"
+              class="materialize-textarea"
+              formControlName="content"
+              length="1000"
+              maxlength="1000"
+              required>
+    </textarea>
+  </div>
+  <div class="input-field">
+    <label for="input-img-url">Image URL</label>
+    <input id="input-img-url"
+           class="validate"
+           type="url"
+           formControlName="imgUrl"
+           required />
+  </div>
+  <div class="input-field">
+    <label for="input-video-url">Video URL</label>
+    <input id="input-video-url"
+           class="validate"
+           type="url"
+           formControlName="videoUrl"
+           required />
+  </div>
+  <div class="input-field">
+    <label for="input-tags">Tags (Separate by comma)</label>
+    <input id="input-tags"
+           class="validate"
+           type="text"
+           formControlName="tags"
+           required />
+  </div>
+  <div class="row center">
+    <button type="submit"
+      class="waves-effect waves-light btn"
+      [class.disabled]="!storyCreationForm.valid"
+      [disabled]="!storyCreationForm.valid">Create Story
+    </button>
+  </div>
+</form>

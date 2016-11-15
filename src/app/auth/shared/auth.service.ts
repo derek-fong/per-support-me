@@ -49,6 +49,16 @@ export class AuthService {
     });
   }
 
+  get userProfile(): Object {
+    return JSON.parse(localStorage.getItem('profile'));
+  }
+
+  get userID(): string {
+    const userProfile: any = this.userProfile;
+
+    return (userProfile) ? userProfile.user_id : undefined;
+  }
+
   get isAuthenticated(): boolean {
     return tokenNotExpired();
   }
