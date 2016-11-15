@@ -6,7 +6,6 @@ import { AngularFire, AngularFireModule } from 'angularfire2';
 
 import { ContentService } from './content.service';
 import { AuthService } from '../../auth/shared/auth.service';
-import { Story } from '../../stories/shared/story.model';
 
 class MockAuthService {
   userID(): string {

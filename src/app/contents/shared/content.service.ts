@@ -11,9 +11,9 @@ export class ContentService {
   constructor(private angularFire: AngularFire,
               private authService: AuthService) { }
 
-  createStory(story: Story): void {
+  createStory(story: Story): any {
     // TODO: Add objects to `/stories/pending`.
-    this.angularFire.database.list('/stories/public').push({
+    return this.angularFire.database.list('/stories/public').push({
       alias: story.alias,
       title: story.title,
       content: story.content,

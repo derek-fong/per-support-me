@@ -8,9 +8,10 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { toast } from 'angular2-materialize';
 
 import { Story } from '../../stories/shared/story.model';
-
 import { ContentService } from '../shared/content.service';
 
 @Component({
@@ -23,7 +24,8 @@ export class ContentStoryComponent implements OnInit {
   private storyCreationForm: FormGroup;
 
   constructor(private contentService: ContentService,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder,
+              private router: Router) { }
 
   ngOnInit() {
     this.initForm();
@@ -59,6 +61,17 @@ export class ContentStoryComponent implements OnInit {
    * @param {Story} newStory - New story object.
    */
   onCreateStory(newStory: Story): void {
-    this.contentService.createStory(newStory);
+    this.contentService.createStory(newStory)
+      .then(() => {
+        toast('Your story has been submitted for review. ', 1000);
+        this.router.navigate(['']);
+      })
+      .catch((err) => {
+        if (err) {
+          toast(`Error: ${err}`, 1000);
+        } else {
+          toast(`An unknown error occurred. `, 5000);
+        }
+      });
   }
 }
